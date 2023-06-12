@@ -23,6 +23,7 @@ public class kazuate {
         num = inputNumber();
     }
 
+    // 数字を入力するための関数
     public int inputNumber() {
         int number;
 
@@ -41,6 +42,7 @@ public class kazuate {
         return number;
     }
 
+    // 数字を判定するための関数
     public void judge(int num, int ans) {
         if (num == ans) {
             System.out.println("当たりです");
@@ -53,20 +55,23 @@ public class kazuate {
 
     // 20以上の差があるとその旨を表示する
     public void diff(int num, int ans) {
-        if (num - ans >= 20) {
+        if (Math.abs(num - ans) >= 20) {
             System.out.println("20以上の差があります");
         }
     }
 
+    // メイン関数
     public static void main(String[] args) {
         kazuate k = new kazuate();
         k.rand = new Random();
         k.ans = k.rand.nextInt(90) + 10; // 10~99の乱数を生成
-        k.count++;
+
         while (k.count < 5) {
-            k.asknumber();
-            k.judge(k.num, k.ans);
-            k.diff(k.num, k.ans);
+            k.count++;
+            k.asknumber(); // 数字を入力する
+            k.judge(k.num, k.ans); // 数字を判定する
+            k.diff(k.num, k.ans); // 20以上の差があるとその旨を表示する
+            System.out.println("あと" + (5 - k.count) + "回です");
         }
     }
 
